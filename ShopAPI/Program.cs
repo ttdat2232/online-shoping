@@ -4,6 +4,7 @@ using Domain.Interfaces.Loggers;
 using Domain.Interfaces.Services;
 using Infrastructure;
 using Infrastructure.Logging;
+using ShopAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseMiddleware<ExceptionMiddleWare>();
 
 app.MapControllers();
 
